@@ -1,0 +1,104 @@
+<view class="login-page">
+  <view class="login-hero">
+    <view class="login-badge">Campus</view>
+    <view class="login-title">惠享校园</view>
+    <view class="login-subtitle">校园优惠、商家活动、报名订阅，一个入口快速搞定。</view>
+  </view>
+
+  <view class="login-card">
+    <view class="mode-switch">
+      <view
+        class="mode-chip {{activeMode === 'wechat' ? 'mode-chip-active' : ''}}"
+        data-mode="wechat"
+        bindtap="switchMode"
+      >
+        微信登录
+      </view>
+      <view
+        class="mode-chip {{activeMode === 'password' ? 'mode-chip-active' : ''}}"
+        data-mode="password"
+        bindtap="switchMode"
+      >
+        账号密码
+      </view>
+      <view
+        class="mode-chip {{activeMode === 'register' ? 'mode-chip-active' : ''}}"
+        data-mode="register"
+        bindtap="switchMode"
+      >
+        注册
+      </view>
+    </view>
+
+    <block wx:if="{{activeMode === 'wechat'}}">
+      <view class="login-copy">微信登录后需要完善姓名、学工号、手机号和登录密码，完成后即可使用全部功能。</view>
+      <button class="primary-login-btn" bindtap="handleWechatLogin">微信快捷登录</button>
+    </block>
+
+    <block wx:elif="{{activeMode === 'password'}}">
+      <view class="login-copy">请输入学工号和密码登录。</view>
+      <input
+        class="login-input"
+        placeholder="请输入学工号"
+        value="{{loginForm.username}}"
+        data-field="username"
+        bindinput="onLoginInput"
+      />
+      <input
+        class="login-input"
+        password
+        placeholder="请输入密码"
+        value="{{loginForm.password}}"
+        data-field="password"
+        bindinput="onLoginInput"
+      />
+      <button class="primary-login-btn" bindtap="handlePasswordLogin">立即登录</button>
+      <view class="switch-copy">还没有账号？切换到“注册”填写资料后即可登录。</view>
+    </block>
+
+    <block wx:else>
+      <view class="login-copy">注册后使用学工号和密码登录，小程序内也可以继续绑定微信使用。</view>
+      <input
+        class="login-input"
+        placeholder="请输入姓名"
+        value="{{registerForm.realName}}"
+        data-field="realName"
+        bindinput="onRegisterInput"
+      />
+      <input
+        class="login-input"
+        placeholder="请输入学工号"
+        value="{{registerForm.userNo}}"
+        data-field="userNo"
+        bindinput="onRegisterInput"
+      />
+      <picker mode="selector" range="{{['学生', '教师']}}" bindchange="onRegisterTypeChange" value="{{registerForm.userType === 'TEACHER' ? 1 : 0}}">
+        <view class="login-input picker-input">身份：{{registerForm.userType === 'TEACHER' ? '教师' : '学生'}}</view>
+      </picker>
+      <input
+        class="login-input"
+        placeholder="请输入手机号"
+        value="{{registerForm.phone}}"
+        data-field="phone"
+        bindinput="onRegisterInput"
+      />
+      <input
+        class="login-input"
+        password
+        placeholder="请设置密码"
+        value="{{registerForm.password}}"
+        data-field="password"
+        bindinput="onRegisterInput"
+      />
+      <input
+        class="login-input"
+        password
+        placeholder="请再次输入密码"
+        value="{{registerForm.confirmPassword}}"
+        data-field="confirmPassword"
+        bindinput="onRegisterInput"
+      />
+      <button class="primary-login-btn" bindtap="handleRegister">注册并登录</button>
+    </block>
+  </view>
+</view>

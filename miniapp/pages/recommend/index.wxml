@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="card recommend-hero">
+    <view class="recommend-title">今日推荐</view>
+    <view class="recommend-copy">根据你已订阅商家的类型，优先推荐距离更近、报名更方便的活动。</view>
+  </view>
+
+  <block wx:if="{{recommendations.length}}">
+    <block wx:for="{{recommendations}}" wx:key="activityId">
+      <view class="card recommend-card" bindtap="goDetail" data-id="{{item.activityId}}">
+        <view class="activity-top">
+          <view class="merchant-title">{{item.merchantName}}</view>
+          <view wx:if="{{item.distanceText}}" class="distance-badge">{{item.distanceText}}</view>
+        </view>
+        <view class="activity-summary">{{item.title}}</view>
+        <view class="activity-desc">{{item.summaryText}}</view>
+        <view class="activity-bottom">
+          <view class="activity-tags">
+            <view class="tag tag-primary">{{item.merchantType}}</view>
+            <view class="tag">{{item.activityType}}</view>
+            <view class="tag recommend-tag">今日推荐</view>
+          </view>
+          <button
+            class="join-btn {{item.joinedStatus === 'JOINED' ? 'joined-btn' : ''}}"
+            catchtap="handleJoinToggle"
+            data-activity-id="{{item.activityId}}"
+            data-joined="{{item.joinedStatus === 'JOINED' ? 'true' : 'false'}}"
+          >
+            {{item.joinedStatus === 'JOINED' ? '取消报名' : '报名活动'}}
+          </button>
+        </view>
+        <view class="activity-meta">名额 {{item.quota || '不限'}} · 已参与 {{item.joinedCount}}</view>
+        <view class="activity-meta">时间 {{item.startTime}} - {{item.endTime}}</view>
+      </view>
+    </block>
+  </block>
+  <view wx:else class="empty-text">暂无推荐活动，先去订阅你感兴趣的商家吧</view>
+</view>

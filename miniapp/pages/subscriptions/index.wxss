@@ -1,0 +1,21 @@
+.subscription-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+.merchant-name {
+  font-weight: 600;
+}
+
+.merchant-type {
+  margin-top: 10rpx;
+  color: #6b7280;
+}
+
+.empty-text {
+  color: #9ca3af;
+  text-align: center;
+  padding: 24rpx 0;
+}

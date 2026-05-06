@@ -1,0 +1,96 @@
+<view class="container home-page">
+  <view class="card hero">
+    <view class="hero-title">{{pageText.heroTitle}}</view>
+    <view class="hero-subtitle">{{pageText.heroSubtitle}}</view>
+  </view>
+
+  <view class="section-title">{{pageText.systemAnnouncements}}</view>
+  <view wx:if="{{announcements.length}}" class="card notice-card">
+    <view class="announcement-title">{{announcements[currentAnnouncementIndex].title}}</view>
+    <view class="announcement-time">{{announcements[currentAnnouncementIndex].publishedAt}}</view>
+    <view class="announcement-content">{{announcements[currentAnnouncementIndex].content}}</view>
+  </view>
+  <view wx:else class="empty-text">{{pageText.noAnnouncements}}</view>
+
+  <view class="card search-panel">
+    <view class="search-shell">
+      <view class="search-input-wrap">
+        <input
+          class="search-input"
+          placeholder="{{pageText.searchPlaceholder}}"
+          value="{{keyword}}"
+          focus="{{inputFocused}}"
+          bindinput="onSearchInput"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+          confirm-type="search"
+          bindconfirm="onSearchConfirm"
+        />
+        <view wx:if="{{keyword}}" class="clear-btn" catchtap="clearKeyword">x</view>
+      </view>
+      <button class="search-btn" bindtap="onSearchConfirm" style="position: relative; left: 0rpx; top: 0rpx; width: 181rpx; display: flex; box-sizing: border-box">{{pageText.search}}</button>
+    </view>
+
+    <scroll-view scroll-x class="category-scroll">
+      <view class="category-track">
+        <block wx:for="{{categoryOptions}}" wx:key="*this">
+          <view
+            class="category-chip {{currentCategory === item ? 'active-chip' : ''}}"
+            data-category="{{item}}"
+            bindtap="onCategoryTap"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+
+    <view class="sort-row">
+      <view class="sort-label">{{pageText.sortLabel}}</view>
+      <picker
+        mode="selector"
+        range="{{sortOptions}}"
+        range-key="label"
+        value="{{sortIndex}}"
+        bindchange="onSortChange"
+      >
+        <view class="sort-picker">
+          <text class="sort-picker-text">{{currentSortLabel}}</text>
+          <text class="sort-arrow">v</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="section-title">{{pageText.activityList}}</view>
+  <block wx:if="{{activities.length}}">
+    <block wx:for="{{activities}}" wx:key="activityId">
+      <view class="card activity-card" bindtap="goDetail" data-id="{{item.activityId}}">
+        <view class="activity-top">
+          <view class="merchant-title">{{item.merchantName}}</view>
+          <view wx:if="{{item.distanceText}}" class="distance-badge">{{item.distanceText}}</view>
+        </view>
+        <view class="activity-summary">{{item.title}}</view>
+        <view class="activity-desc">{{item.summaryText}}</view>
+        <view class="activity-bottom">
+          <view class="activity-tags">
+            <view class="tag tag-primary">{{item.merchantType}}</view>
+            <view class="tag">{{item.activityType}}</view>
+          </view>
+          <button
+            class="join-btn {{item.joinedStatus === 'JOINED' ? 'joined-btn' : ''}}"
+            catchtap="handleJoinToggle"
+            data-activity-id="{{item.activityId}}"
+            data-joined="{{item.joinedStatus === 'JOINED' ? 'true' : 'false'}}"
+          >
+            {{item.joinedStatus === 'JOINED' ? pageText.cancelJoin : pageText.joinActivity}}
+          </button>
+        </view>
+        <view class="activity-meta">{{pageText.quotaLabel}} {{item.quota || pageText.unlimitedQuota}} · {{pageText.joinedLabel}}{{item.joinedCountValue}}</view>
+        <view class="activity-meta">{{pageText.ratingInfoLabel}} {{item.ratingText}}</view>
+        <view class="activity-meta">{{pageText.timeLabel}} {{item.startTime}} - {{item.endTime}}</view>
+      </view>
+    </block>
+  </block>
+  <view wx:else class="empty-text">{{pageText.emptyActivities}}</view>
+</view>

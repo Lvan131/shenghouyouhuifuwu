@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: youhuifuwu-backend
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/youhuifuwu?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 654321
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: assign_id
+
+jwt:
+  issuer: youhuifuwu
+  secret: ReplaceThisWithALongerSecretKeyForDevOnly123456
+  expire-hours: 24
+
+app:
+  cors:
+    allowed-origins: http://localhost:5173

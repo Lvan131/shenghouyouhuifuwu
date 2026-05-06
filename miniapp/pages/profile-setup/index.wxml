@@ -1,0 +1,49 @@
+<view class="setup-page">
+  <view class="setup-card">
+    <view class="setup-title">完成资料设置</view>
+    <view class="setup-copy">微信登录成功后，请继续完善姓名、学工号、身份、手机号和登录密码。</view>
+
+    <input
+      class="setup-input"
+      placeholder="请输入姓名"
+      value="{{form.realName}}"
+      data-field="realName"
+      bindinput="onFieldInput"
+    />
+    <input
+      class="setup-input"
+      placeholder="请输入学工号"
+      value="{{form.userNo}}"
+      data-field="userNo"
+      bindinput="onFieldInput"
+    />
+    <picker mode="selector" range="{{['学生', '教师']}}" bindchange="onTypeChange" value="{{form.userType === 'TEACHER' ? 1 : 0}}">
+      <view class="setup-input picker-input">身份：{{form.userType === 'TEACHER' ? '教师' : '学生'}}</view>
+    </picker>
+    <input
+      class="setup-input"
+      placeholder="请输入手机号"
+      value="{{form.phone}}"
+      data-field="phone"
+      bindinput="onFieldInput"
+    />
+    <input
+      class="setup-input"
+      password
+      placeholder="请设置登录密码"
+      value="{{form.password}}"
+      data-field="password"
+      bindinput="onFieldInput"
+    />
+    <input
+      class="setup-input"
+      password
+      placeholder="请再次输入密码"
+      value="{{form.confirmPassword}}"
+      data-field="confirmPassword"
+      bindinput="onFieldInput"
+    />
+
+    <button class="setup-btn" bindtap="submit">保存并进入首页</button>
+  </view>
+</view>

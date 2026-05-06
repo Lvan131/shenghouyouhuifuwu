@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="section-title">订阅商家</view>
+  <block wx:if="{{merchants.length}}">
+    <block wx:for="{{merchants}}" wx:key="subscriptionId">
+      <view class="card subscription-card">
+        <view>
+          <view class="merchant-name">{{item.merchantName}}</view>
+          <view class="merchant-type">{{item.merchantType}}</view>
+          <view class="merchant-type">{{item.address}}</view>
+        </view>
+        <button size="mini" bindtap="cancelSubscription" data-merchant-id="{{item.merchantId}}">
+          取消订阅
+        </button>
+      </view>
+    </block>
+  </block>
+  <view wx:else class="empty-text">你还没有订阅任何商家</view>
+</view>

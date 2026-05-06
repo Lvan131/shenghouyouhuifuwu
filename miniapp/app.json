@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/profile-setup/index",
+    "pages/index/index",
+    "pages/recommend/index",
+    "pages/nearby-merchants/index",
+    "pages/merchant-activity-list/index",
+    "pages/activity-detail/index",
+    "pages/merchant-rating/index",
+    "pages/my/index",
+    "pages/my-offers/index",
+    "pages/subscriptions/index",
+    "pages/announcements/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "校园优惠服务",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f7fb"
+  },
+  "tabBar": {
+    "color": "#6b7280",
+    "selectedColor": "#2563eb",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/recommend/index",
+        "text": "今日推荐"
+      },
+      {
+        "pagePath": "pages/nearby-merchants/index",
+        "text": "附近商家"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

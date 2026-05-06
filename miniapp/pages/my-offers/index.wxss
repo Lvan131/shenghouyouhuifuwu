@@ -1,0 +1,66 @@
+.offer-card {
+  margin-bottom: 18rpx;
+}
+
+.offer-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.offer-copy {
+  flex: 1;
+}
+
+.offer-title {
+  font-weight: 600;
+  color: #111827;
+}
+
+.offer-meta {
+  margin-top: 10rpx;
+  color: #6b7280;
+}
+
+.offer-tip {
+  margin-top: 10rpx;
+  color: #16a34a;
+  font-size: 24rpx;
+}
+
+.muted-tip {
+  color: #94a3b8;
+}
+
+.rating-tip {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.offer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.cancel-btn,
+.rate-btn {
+  margin: 0;
+  border-radius: 999rpx;
+}
+
+.cancel-btn {
+  background: #eef2f7;
+  color: #1f2937;
+}
+
+.rate-btn {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #ffffff;
+}
+
+.empty-text {
+  color: #9ca3af;
+  text-align: center;
+  padding: 24rpx 0;
+}

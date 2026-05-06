@@ -1,0 +1,64 @@
+.rating-summary {
+  margin-top: 8rpx;
+  color: #f59e0b;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.meta-text {
+  margin-top: 12rpx;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.star-row {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 26rpx;
+}
+
+.star-item {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 18rpx;
+  background: #f1f5f9;
+  color: #cbd5e1;
+  font-size: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star-item-active {
+  background: #fff7ed;
+  color: #f59e0b;
+}
+
+.score-text {
+  margin-top: 14rpx;
+  color: #334155;
+}
+
+.comment-textarea {
+  width: 100%;
+  min-height: 220rpx;
+  margin-top: 24rpx;
+  padding: 22rpx;
+  border-radius: 24rpx;
+  background: #f8fafc;
+  color: #1f2937;
+  box-sizing: border-box;
+}
+
+.disabled-tip {
+  margin-top: 16rpx;
+  color: #ef4444;
+  line-height: 1.6;
+}
+
+.submit-btn {
+  margin-top: 28rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #ffffff;
+}

@@ -1,0 +1,132 @@
+.profile-card {
+  margin-bottom: 24rpx;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  color: #ffffff;
+}
+
+.guest-card {
+  background: linear-gradient(135deg, #0f172a, #2563eb);
+}
+
+.nickname {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.user-no {
+  margin-top: 12rpx;
+  opacity: 0.9;
+}
+
+.profile-actions,
+.guest-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 22rpx;
+}
+
+.edit-btn {
+  width: 180rpx;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border: 1rpx solid rgba(255, 255, 255, 0.4);
+}
+
+.ghost-btn {
+  width: 220rpx;
+  background: rgba(15, 23, 42, 0.16);
+  color: #ffffff;
+  border: 1rpx solid rgba(255, 255, 255, 0.32);
+}
+
+.section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8rpx 0 18rpx;
+}
+
+.more-link {
+  color: #2563eb;
+  font-size: 26rpx;
+}
+
+.preview-card {
+  margin-bottom: 18rpx;
+}
+
+.preview-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.preview-meta {
+  margin-top: 10rpx;
+  color: #6b7280;
+}
+
+.empty-card {
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+  border-radius: 24rpx;
+  background: #ffffff;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.logout-btn {
+  margin-top: 8rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+  color: #ef4444;
+  border: 2rpx solid #fecaca;
+}
+
+.logout-btn::after {
+  border: none;
+}
+
+.mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx;
+}
+
+.dialog {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+}
+
+.dialog-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 18rpx;
+}
+
+.dialog-input {
+  height: 76rpx;
+  line-height: 76rpx;
+  padding: 0 18rpx;
+  margin-bottom: 16rpx;
+  background: #f3f4f6;
+  border-radius: 16rpx;
+}
+
+.login-tip {
+  margin-bottom: 16rpx;
+  color: #6b7280;
+  font-size: 24rpx;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16rpx;
+}

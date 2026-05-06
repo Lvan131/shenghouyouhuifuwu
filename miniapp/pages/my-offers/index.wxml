@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="section-title">参与记录</view>
+  <block wx:if="{{offers.length}}">
+    <block wx:for="{{offers}}" wx:key="recordId">
+      <view class="card offer-card" bindtap="goDetail" data-id="{{item.activityId}}">
+        <view class="offer-row">
+          <view class="offer-copy">
+            <view class="offer-title">{{item.title}}</view>
+            <view class="offer-meta">商户：{{item.merchantName || '未知商户'}}</view>
+            <view class="offer-meta">活动类型：{{item.activityType}}</view>
+            <view class="offer-meta">状态：{{item.status === 'JOINED' ? '已报名' : item.status === 'CANCELED' ? '已取消' : item.status}}</view>
+            <view class="offer-meta">参加日期：{{item.participationDate || '未选择'}}</view>
+            <view class="offer-meta">报名时间：{{item.joinTime}}</view>
+            <view wx:if="{{item.completed}}" class="offer-tip">活动已完成，可对商户进行评价</view>
+            <view wx:elif="{{item.status === 'JOINED'}}" class="offer-tip muted-tip">活动完成后可评价商户</view>
+            <view wx:if="{{item.rated}}" class="offer-tip rating-tip">我的评分：{{item.ratingScore}} 分</view>
+          </view>
+          <view class="offer-actions">
+            <button
+              wx:if="{{item.status === 'JOINED'}}"
+              size="mini"
+              class="cancel-btn"
+              catchtap="cancelJoin"
+              data-activity-id="{{item.activityId}}"
+            >
+              取消报名
+            </button>
+            <button
+              wx:if="{{item.canRate}}"
+              size="mini"
+              class="rate-btn"
+              catchtap="goRate"
+              data-merchant-id="{{item.merchantId}}"
+              data-merchant-name="{{item.merchantName}}"
+              data-activity-id="{{item.activityId}}"
+              data-title="{{item.title}}"
+            >
+              {{item.rated ? '修改评价' : '去评价'}}
+            </button>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <view wx:else class="empty-text">你还没有参与任何活动</view>
+</view>

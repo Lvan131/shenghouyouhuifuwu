@@ -1,0 +1,24 @@
+.announcement-card {
+  margin-bottom: 18rpx;
+}
+
+.announcement-title {
+  font-weight: 600;
+}
+
+.announcement-time {
+  margin-top: 10rpx;
+  color: #6b7280;
+}
+
+.announcement-content {
+  margin-top: 12rpx;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.empty-text {
+  color: #9ca3af;
+  text-align: center;
+  padding: 24rpx 0;
+}

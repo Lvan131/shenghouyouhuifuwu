@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="card merchant-search-panel">
+    <input
+      class="merchant-search-input"
+      placeholder="搜索附近商户"
+      value="{{keyword}}"
+      bindinput="onSearchInput"
+      confirm-type="search"
+      bindconfirm="onSearchConfirm"
+    />
+    <scroll-view scroll-x class="category-scroll">
+      <view class="category-track">
+        <block wx:for="{{categoryOptions}}" wx:key="*this">
+          <view
+            class="category-chip {{currentCategory === item ? 'active-chip' : ''}}"
+            data-category="{{item}}"
+            bindtap="onCategoryTap"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <block wx:if="{{merchants.length}}">
+    <block wx:for="{{merchants}}" wx:key="merchantId">
+      <view
+        class="card merchant-card"
+        bindtap="goMerchantActivities"
+        data-merchant-id="{{item.merchantId}}"
+        data-merchant-name="{{item.merchantName}}"
+        data-avg-score="{{item.avgScore}}"
+        data-rating-count="{{item.ratingCount}}"
+      >
+        <view class="merchant-main">
+          <view class="merchant-top">
+            <view class="merchant-name">{{item.merchantName}}</view>
+            <view wx:if="{{item.distanceText}}" class="merchant-distance">{{item.distanceText}}</view>
+          </view>
+          <view class="merchant-rating">{{item.ratingText}}</view>
+          <view class="merchant-meta">{{item.merchantType}} · {{item.address}}</view>
+          <view class="merchant-meta">在线活动 {{item.activityCount}}</view>
+        </view>
+        <button
+          size="mini"
+          class="subscribe-btn {{item.subscribed ? 'subscribed-btn' : ''}}"
+          catchtap="subscribeMerchant"
+          data-merchant-id="{{item.merchantId}}"
+          data-subscribed="{{item.subscribed ? 'true' : 'false'}}"
+        >
+          {{item.subscribed ? '取消订阅' : '订阅商户'}}
+        </button>
+      </view>
+    </block>
+  </block>
+  <view wx:else class="empty-text">当前分类下暂无商户</view>
+</view>

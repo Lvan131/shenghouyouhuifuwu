@@ -1,0 +1,52 @@
+<view class="container">
+  <view wx:if="{{detail}}" class="card">
+    <view class="section-title">{{detail.activity.title}}</view>
+    <view class="merchant-row">
+      <view>
+        <view class="merchant-name">{{detail.merchant.merchantName}}</view>
+        <view class="merchant-rating">{{merchantRatingText}}</view>
+      </view>
+      <button
+        size="mini"
+        class="subscribe-btn {{subscribed ? 'subscribed-btn' : ''}}"
+        bindtap="handleSubscribeToggle"
+      >
+        {{subscribed ? '取消订阅' : '订阅商家'}}
+      </button>
+    </view>
+    <view wx:if="{{distanceText}}" class="paragraph">距离：{{distanceText}}</view>
+    <view class="paragraph">商家类型：{{detail.merchant.merchantType}}</view>
+    <view class="paragraph">活动类型：{{detail.activity.activityType}}</view>
+    <view class="paragraph">活动介绍：{{detail.activity.content}}</view>
+    <view class="paragraph">地址：{{detail.merchant.address}}</view>
+    <view class="paragraph">联系电话：{{detail.merchant.contactPhone}}</view>
+    <view class="paragraph">总名额：{{detail.activity.quota || '不限'}} / 已参与：{{detail.activity.joinedCount}}</view>
+    <view class="paragraph">每日名额：{{detail.activity.dailyQuota}}</view>
+    <view class="paragraph">活动时间：{{detail.activity.startTime}} - {{detail.activity.endTime}}</view>
+
+    <view wx:if="{{scheduleOptions.length}}" class="schedule-card">
+      <view class="schedule-title">选择参加日期</view>
+      <picker mode="selector" range="{{scheduleOptions}}" range-key="label" value="{{selectedScheduleIndex}}" bindchange="onScheduleChange">
+        <view class="schedule-picker">{{selectedSchedule ? selectedSchedule.label : '请选择参加日期'}}</view>
+      </picker>
+      <view wx:if="{{joinedRecord && joinedRecord.status === 'JOINED'}}" class="schedule-note">
+        当前已报名日期：{{joinedRecord.participationDate}}
+      </view>
+      <view wx:if="{{selectedSchedule && selectedSchedule.full && joinedStatus !== 'JOINED'}}" class="schedule-warning">
+        当日活动名额已满，请选择其他日期
+      </view>
+      <view wx:elif="{{selectedSchedule}}" class="schedule-note">
+        当前日期已报 {{selectedSchedule.joinedCount}} 人，剩余 {{selectedSchedule.remainingQuota}} 个名额
+      </view>
+    </view>
+
+    <button
+      class="primary-btn {{joinedStatus === 'JOINED' ? 'secondary-btn' : ''}} {{joinDisabled ? 'disabled-btn' : ''}}"
+      bindtap="handleJoinToggle"
+      disabled="{{joinDisabled}}"
+    >
+      {{joinedStatus === 'JOINED' ? '取消报名' : '立即报名'}}
+    </button>
+  </view>
+  <view wx:else class="card">活动信息加载中...</view>
+</view>

@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="card">
+    <view class="section-title">{{merchantName || '商户评价'}}</view>
+    <view class="rating-summary">{{ratingText}}</view>
+    <view class="meta-text">活动：{{activityTitle || '已完成活动'}}</view>
+
+    <view class="star-row">
+      <block wx:for="{{stars}}" wx:key="score">
+        <view
+          class="star-item {{item.active ? 'star-item-active' : ''}}"
+          data-score="{{item.score}}"
+          bindtap="selectScore"
+        >
+          ★
+        </view>
+      </block>
+    </view>
+    <view class="score-text">当前评分：{{score}} 分</view>
+
+    <textarea
+      class="comment-textarea"
+      placeholder="可以填写你的活动体验、服务感受或推荐理由"
+      value="{{content}}"
+      maxlength="500"
+      bindinput="onContentInput"
+    />
+
+    <view wx:if="{{!canRate}}" class="disabled-tip">{{reason || '当前暂不可评价'}}</view>
+
+    <button
+      class="submit-btn"
+      bindtap="submitRating"
+      loading="{{submitting}}"
+      disabled="{{!canRate || submitting}}"
+    >
+      {{rated ? '更新评价' : '提交评价'}}
+    </button>
+  </view>
+</view>
