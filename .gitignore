@@ -15,3 +15,7 @@ Thumbs.db
 *.out
 *.err
 miniapp/project.private.config.json
+admin-web/.env.local
+admin-web/.env.*.local
+backend/src/main/resources/application-local.yml
+miniapp/config.js

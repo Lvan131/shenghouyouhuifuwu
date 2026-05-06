@@ -1,6 +1,14 @@
+let localConfig = {}
+
+try {
+  localConfig = require('./config')
+} catch (error) {
+  localConfig = {}
+}
+
 App({
   globalData: {
-    baseUrl: 'http://127.0.0.1:8080/api',
+    baseUrl: localConfig.baseUrl || 'http://127.0.0.1:8080/api',
     token: '',
     userInfo: null,
     loginMode: 'none'

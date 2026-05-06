@@ -42,11 +42,29 @@ sql/05_upgrade_merchant_rating.sql
 
 后端默认配置文件位于 [application.yml](D:/wechatbishe/youhuifuwu/backend/src/main/resources/application.yml:1)。
 
-当前默认配置：
+仓库中提交的是可公开的默认配置，敏感值改为环境变量读取。
+
+默认变量：
 
 - 端口：`8080`
 - 数据库：`jdbc:mysql://127.0.0.1:3306/youhuifuwu`
+- 用户名：`root`
+- 密码：`DB_PASSWORD`，默认占位值为 `change-me`
 - 允许跨域来源：`http://localhost:5173`
+- JWT 密钥：`JWT_SECRET`，默认占位值为 `change-me-to-a-long-random-string`
+
+推荐做法：
+
+1. 复制 [application-local.example.yml](D:/wechatbishe/youhuifuwu/backend/src/main/resources/application-local.example.yml:1) 为 `backend/src/main/resources/application-local.yml`
+2. 把你自己的数据库密码和 JWT 密钥填进去
+3. 这个本地文件已加入 `.gitignore`，不会被提交
+
+也可以直接通过环境变量覆盖：
+
+```bash
+DB_PASSWORD=你的数据库密码
+JWT_SECRET=你的本地JWT密钥
+```
 
 启动命令：
 
@@ -63,6 +81,8 @@ mvn clean package
 ```
 
 ## 管理后台启动
+
+可选：先复制 [admin-web/.env.example](D:/wechatbishe/youhuifuwu/admin-web/.env.example:1) 为 `admin-web/.env.local`，再按需修改接口地址。
 
 启动开发环境：
 
@@ -88,7 +108,8 @@ npm run build
 1. 打开微信开发者工具
 2. 导入目录 `miniapp/`
 3. AppID 使用 [project.config.json](D:/wechatbishe/youhuifuwu/miniapp/project.config.json:1) 中的配置
-4. 根据本地后端地址检查并调整小程序请求配置
+4. 可选：复制 [miniapp/config.example.js](D:/wechatbishe/youhuifuwu/miniapp/config.example.js:1) 为 `miniapp/config.js`，按需修改 `baseUrl`
+5. 根据本地后端地址检查并调整小程序请求配置
 
 ## Git 说明
 

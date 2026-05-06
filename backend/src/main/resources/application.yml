@@ -1,13 +1,15 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 
 spring:
+  config:
+    import: optional:classpath:application-local.yml
   application:
     name: youhuifuwu-backend
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/youhuifuwu?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 654321
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/youhuifuwu?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:change-me}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis-plus:
@@ -19,10 +21,10 @@ mybatis-plus:
       id-type: assign_id
 
 jwt:
-  issuer: youhuifuwu
-  secret: ReplaceThisWithALongerSecretKeyForDevOnly123456
-  expire-hours: 24
+  issuer: ${JWT_ISSUER:youhuifuwu}
+  secret: ${JWT_SECRET:change-me-to-a-long-random-string}
+  expire-hours: ${JWT_EXPIRE_HOURS:24}
 
 app:
   cors:
-    allowed-origins: http://localhost:5173
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
