@@ -1,8 +1,17 @@
 .codex/
 .idea/
+*.iml
+*.class
+*.jar
+*.war
+*.zip
+*.tmp
+Thumbs.db
+.DS_Store
 **/node_modules/
 **/dist/
 **/target/
 *.log
 *.out
 *.err
+miniapp/project.private.config.json
