@@ -46,8 +46,6 @@ sql/05_upgrade_merchant_rating.sql
 
 - 端口：`8080`
 - 数据库：`jdbc:mysql://127.0.0.1:3306/youhuifuwu`
-- 用户名：`root`
-- 密码：`654321`
 - 允许跨域来源：`http://localhost:5173`
 
 启动命令：
